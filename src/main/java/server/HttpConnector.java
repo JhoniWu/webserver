@@ -20,6 +20,7 @@ public class HttpConnector implements Runnable{
 			serverSocket = new ServerSocket(port, 1, InetAddress.getByName("127.0.0.1"));
 		} catch (IOException e){
 			e.printStackTrace();
+            System.exit(1);
 		}
 		while (true){
 			Socket socket = null;
@@ -36,6 +37,6 @@ public class HttpConnector implements Runnable{
 
 	public void start(){
 		Thread t = new Thread(this);
-		this.start();
+		t.start();
 	}
 }

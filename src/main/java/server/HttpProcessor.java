@@ -33,7 +33,8 @@ public class HttpProcessor {
 				StaticResourceProcessor processor = new StaticResourceProcessor();
 				processor.process(request, response);
 			}
-			socket.close();
+
+
 		} catch (Exception e){
 			e.printStackTrace();
 		}

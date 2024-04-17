@@ -38,9 +38,9 @@ public class ServletProcessor {
 			URL[] urls = new URL[1];
 			URLStreamHandler streamHandler = null;
 			File classPath = new File(HttpServer.WEB_ROOT);
-            String repository = (new URL("file", null, classPath.getCanonicalPath() + File.separator)).toString() ;
-            urls[0] = new URL(null, repository, streamHandler);
-            loader = new URLClassLoader(urls);
+			String repository = (new URL("file", null, classPath.getCanonicalPath() + File.separator)).toString() ;
+			urls[0] = new URL(null, repository, streamHandler);
+			loader = new URLClassLoader(urls);
         }
         catch (IOException e) {
 			System.out.println(e.toString());
@@ -66,22 +66,21 @@ public class ServletProcessor {
 		try {
 			servlet = (Servlet) servletClass.newInstance();
 			servlet.service(request, response);
-        } catch (InstantiationException e) {
-			throw new RuntimeException(e);
-		} catch (IllegalAccessException e) {
-			throw new RuntimeException(e);
-		} catch (ServletException e) {
-			throw new RuntimeException(e);
-		} catch (IOException e) {
-			throw new RuntimeException(e);
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
 		}
+        catch (Throwable e) {
+            System.out.println(e.toString());
+        }
+
 	}
 
 	private String composeResponseHead() {
 		Map<String, Object> valuesMap = new HashMap<>();
 		valuesMap.put("StatusCode","200");
 		valuesMap.put("StatusName","OK");
-		valuesMap.put("ContentType","text/html;charset=uft-8");
+		valuesMap.put("ContentType","text/html;charset=UTF-8");
 		valuesMap.put("ZonedDateTime", DateTimeFormatter.ISO_ZONED_DATE_TIME.format(ZonedDateTime.now()));
 		StrSubstitutor sub = new StrSubstitutor(valuesMap);
         String responseHead = sub.replace(OKMessage);

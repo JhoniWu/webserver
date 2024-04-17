@@ -63,7 +63,7 @@ public class Response implements ServletResponse {
 
 	@Override
 	public String getCharacterEncoding() {
-		return null;
+        return this.characterEncoding;
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public class Response implements ServletResponse {
 
 	@Override
 	public void setCharacterEncoding(String s) {
-
+		this.characterEncoding = s;
 	}
 
 	@Override
