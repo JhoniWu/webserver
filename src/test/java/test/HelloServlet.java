@@ -27,10 +27,8 @@ public class HelloServlet implements Servlet {
 			"<html>\n" +
 			"<head><meta charset=\"utf-8\"><title>Test</title></head>\n"+
 			"<body bgcolor=\"#f0f0f0\">\n" +
-			"<h1 align=\"center\">" + "Hello World 你好" + "</h1>\n";
-		System.out.println("log - response write back");
+			"<h1 align=\"center\">" + "MiniTomcat 你好" + "</h1>\n";
 		servletResponse.getWriter().println(doc);
-		System.out.println("log - response write back over");
 	}
 
 	@Override
